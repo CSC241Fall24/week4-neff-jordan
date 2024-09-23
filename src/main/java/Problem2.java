@@ -23,6 +23,6 @@ public class Problem2 {
             }
             ref.next = new ListNode(val);
         }
-        return null;
+        return head;
     }
 }
