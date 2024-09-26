@@ -13,23 +13,30 @@ public class Problem2 {
         if(head == null && position == 1) head = newNode;
         else if(position < 0 || position > size(head)) {
             ListNode ref = head;
-            while(ref != null) {
+            while(ref != null)
                 ref = ref.next;
-            }
-            newNode.next = ref.next;
             ref.next = newNode;
-        } else {
-            int count = 1;
+        }
+        else {
+
+            int count = 0;
             ListNode ref = head;
-            while(count != position) {
-                count++;
+
+            while(ref != null || count < position) {
                 ref = ref.next;
+                count++;
             }
             newNode.next = ref.next;
             ref.next = newNode;
+
         }
         return head;
     }
+
+
+
+
+
     public static int size(ListNode head) {
         ListNode ref = head;
         int count = 0;
