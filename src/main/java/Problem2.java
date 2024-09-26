@@ -7,13 +7,17 @@ public class Problem2 {
         // TODO: Implement the insert method
         // This method should insert a new node with the given value at the specified position
         // If the position is out of bounds, insert the node at the end of the list
-        if(head == null && position == 1) head.next = new ListNode(val);
+
+        ListNode newNode = new ListNode(val);
+
+        if(head == null && position == 1) head = newNode;
         else if(position < 0 || position > size(head)) {
             ListNode ref = head;
             while(ref != null) {
                 ref = ref.next;
             }
-            ref.next = new ListNode(val);
+            newNode.next = ref.next;
+            ref.next = newNode;
         } else {
             int count = 1;
             ListNode ref = head;
@@ -21,7 +25,8 @@ public class Problem2 {
                 count++;
                 ref = ref.next;
             }
-            ref.next = new ListNode(val);
+            newNode.next = ref.next;
+            ref.next = newNode;
         }
         return head;
     }
