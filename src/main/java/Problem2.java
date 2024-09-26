@@ -10,10 +10,13 @@ public class Problem2 {
 
         ListNode newNode = new ListNode(val);
 
-        if(head == null && position == 1) head = newNode;
+        if(head == null && position == 1) {
+            head = newNode;
+            return head;
+        }
         else if(position < 0 || position > size(head)) {
             ListNode ref = head;
-            while(ref != null)
+            while(ref.next != null)
                 ref = ref.next;
             ref.next = newNode;
         }
