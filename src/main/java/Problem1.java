@@ -13,8 +13,7 @@ public class Problem1 {
         }
 
         while(l2 != null) {
-            int tempVal = ref.val;
-            ListNode newNode = new ListNode(tempVal);
+            ListNode newNode = new ListNode(l2.val);
             ref.next = newNode;
             ref = ref.next;
             l2 = l2.next;
