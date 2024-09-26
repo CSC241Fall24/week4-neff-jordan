@@ -4,57 +4,50 @@ import java.util.List;
 
 public class Problem2 {
     public static ListNode insert(ListNode head, int val, int position) {
-        // TODO: Implement the insert method
-        // This method should insert a new node with the given value at the specified position
-        // If the position is out of bounds, insert the node at the end of the list
-
         ListNode newNode = new ListNode(val);
 
-        if(head == null && position == 1) {
-            head = newNode;
-            return head;
+        // Insert at the beginning or if the list is empty
+        if (head == null || position <= 1) {
+            newNode.next = head;
+            return newNode; // New node becomes the head
         }
-        else if(position < 0 || position > size(head)) {
+
+        // Insert at the end if the position is out of bounds
+        else if (position > size(head)) {
             ListNode ref = head;
-            while(ref.next != null)
+            while (ref.next != null) {  // Traverse to the last node
                 ref = ref.next;
+            }
             ref.next = newNode;
         }
+
+        // Insert in the middle at the specified position
         else {
-
-            int count = 0;
             ListNode ref = head;
+            int count = 1;
 
-            while(ref != null || count < position) {
+            // Traverse until the node just before the position
+            while (ref != null && count < position - 1) {
                 ref = ref.next;
                 count++;
             }
+
+            // Insert the new node
             newNode.next = ref.next;
             ref.next = newNode;
-
         }
+
         return head;
     }
 
-
-
-
-
+    // Method to calculate the size of the linked list
     public static int size(ListNode head) {
         ListNode ref = head;
         int count = 0;
-        while(ref != null) {
+        while (ref != null) {
             count++;
             ref = ref.next;
         }
         return count;
     }
 }
-
-/*
-    Implement a function to insert a new node with a given value at a specified position in a linked list
-
- * Constraints:
- * – If the position is out of bounds, insert the node at the end of the list
- * – If the position is 1 or the list is empty, insert at the beginning
- */
